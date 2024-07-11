@@ -1,0 +1,14 @@
+[package]
+name = "rust_rpc_client"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.38.0", features = ["full"] }
+tokio-stream = { version = "0.1.15", features = ["full"] }
+tonic = "0.12.0"
+tonic-build = "0.12.0"
+prost = "*"
+
+[build-dependencies]
+tonic-build = {version = "0.12.0", features=["prost"]}
