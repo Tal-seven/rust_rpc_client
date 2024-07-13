@@ -6,9 +6,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     tonic_build::configure()
         .file_descriptor_set_path(out_dir.join("Scan_descriptor.bin"))
+        .disable_package_emission()
         .compile(&["proto/Scan.proto"], &["proto"])?;
-
-    tonic_build::compile_protos("proto/Scan.proto")?;
 
     Ok(())
 }

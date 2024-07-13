@@ -6,14 +6,10 @@ use std::error::Error;
 use tokio_stream::StreamExt;
 use tonic::transport::Channel;
 
-use proto::scan_service_client::ScanServiceClient;
+use proto::{scan_service_client::ScanServiceClient, Empty};
 
 async fn streaming_scan(client: &mut ScanServiceClient<Channel>) {
-    let mut stream = client
-        .get_scan_stream(tonic::Request::<()>::new(()))
-        .await
-        .unwrap()
-        .into_inner();
+    let mut stream = client.get_scan_stream(Empty {}).await.unwrap().into_inner();
 
     while let Some(scan) = stream.next().await {
         println!("Received scan value {:?}", scan);

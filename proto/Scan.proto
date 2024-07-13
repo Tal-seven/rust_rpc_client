@@ -7,7 +7,7 @@ syntax = "proto3";
 
 package rust_rmq.sensors;
 
-import "google/protobuf/empty.proto";
+message Empty {}
 
 message Scan {
   // Header header = 1;
@@ -22,5 +22,5 @@ message Scan {
 }
 
 service ScanService {
-  rpc getScanStream(google.protobuf.Empty) returns (stream Scan) {}
+  rpc getScanStream(Empty) returns (stream Scan) {}
 }
